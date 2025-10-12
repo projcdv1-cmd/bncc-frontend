@@ -1,5 +1,5 @@
 import { useAuth } from "@/contexts/AuthContext";
-import { authApi } from "@/services/api";
+import { authApi } from "@/services/authApi";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
@@ -29,11 +29,11 @@ export default function LoginScreen() {
     try {
       const response = await authApi.login({ email, senha });
 
-      if (response.success) {
-        await login({ email, ...response.user });
-      } else {
-        Alert.alert("Erro", response.message || "Credenciais inválidas");
+      if (!response.success) {
+        Alert.alert("Erro", response.message || "Acesso inválido");
+        return
       }
+      await login({ email, ...response.user });
     } catch {
       Alert.alert("Erro", "Erro de conexão com o servidor");
     } finally {
