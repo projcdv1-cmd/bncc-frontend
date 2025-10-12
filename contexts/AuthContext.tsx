@@ -25,10 +25,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     checkAuthState();
-    
-    const interval = setInterval(checkAuthState, 60000); // a cada 1 minuto verifica o estado da autenticação
-    
-    return () => clearInterval(interval);
   }, []);
 
   const checkAuthState = async () => {
