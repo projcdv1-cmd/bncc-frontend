@@ -7,7 +7,10 @@ export interface LoginCredentials {
 
 export interface LoginResponse {
   success: boolean;
-  user?: any;
+  user?: {
+    email?: string;
+    metadata?: any;
+  };
   message?: string;
 }
 
