@@ -209,7 +209,10 @@ export default function QuestoesScreen() {
               disabled={isSubmitting}
             >
               {isSubmitting ? (
-                <ActivityIndicator size="small" color="white" />
+                <View style={styles.buttonLoadingContainer}>
+                  <ActivityIndicator size="small" color="white" />
+                  <Text style={styles.buttonLoadingText}>Enviando...</Text>
+                </View>
               ) : (
                 <Text style={styles.finishConfirmButtonText}>Finalizar</Text>
               )}
@@ -332,12 +335,17 @@ export default function QuestoesScreen() {
 
       <View style={styles.navigationContainer}>
         <TouchableOpacity
-          style={[styles.navButton, currentQuestionIndex === 0 && styles.disabledButton]}
+          style={[
+            styles.navButton, 
+            styles.prevButton,
+            currentQuestionIndex === 0 && styles.disabledButton
+          ]}
           onPress={handlePrevious}
           disabled={currentQuestionIndex === 0}
         >
           <Text style={[
             styles.navButtonText,
+            styles.prevButtonText,
             currentQuestionIndex === 0 && styles.disabledText
           ]}>
             Anterior
@@ -348,7 +356,7 @@ export default function QuestoesScreen() {
           style={[styles.navButton, styles.nextButton]}
           onPress={handleNext}
         >
-          <Text style={styles.navButtonText}>
+          <Text style={[styles.navButtonText, styles.nextButtonText]}>
             {currentQuestionIndex === questions.length - 1 ? 'Finalizar' : 'Próxima'}
           </Text>
         </TouchableOpacity>
@@ -469,30 +477,53 @@ const createStyles = (theme: any) => StyleSheet.create({
     flexDirection: 'row',
     padding: 20,
     gap: 15,
-    backgroundColor: 'white',
+    backgroundColor: theme.surface,
     borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
+    borderTopColor: BaseColors.gray[200],
+    shadowColor: BaseColors.black,
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
   },
   navButton: {
     flex: 1,
     padding: 15,
-    borderRadius: 8,
-    backgroundColor: '#e0e0e0',
+    borderRadius: 12,
     alignItems: 'center',
+    shadowColor: BaseColors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  prevButton: {
+    backgroundColor: BaseColors.gray[600],
+    borderWidth: 2,
+    borderColor: BaseColors.gray[600],
   },
   nextButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: theme.primary,
   },
   disabledButton: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: BaseColors.gray[300],
+    borderColor: BaseColors.gray[300],
+    opacity: 0.6,
   },
   navButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: 'white',
+  },
+  prevButtonText: {
+    color: BaseColors.white,
+  },
+  nextButtonText: {
+    color: theme.primary,
   },
   disabledText: {
-    color: '#999',
+    color: BaseColors.gray[500],
   },
   // Estilos do resumo
   summaryContainer: {
@@ -567,16 +598,23 @@ const createStyles = (theme: any) => StyleSheet.create({
     fontWeight: 'bold',
   },
   finishButton: {
-    backgroundColor: '#34C759',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: theme.primary,
     margin: 20,
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: 'center',
+    shadowColor: BaseColors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
   },
   finishButtonText: {
-    color: 'white',
+    color: theme.primary,
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   // Estilos da tela de confirmação
   confirmationContainer: {
@@ -588,19 +626,19 @@ const createStyles = (theme: any) => StyleSheet.create({
   confirmationTitle: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#333',
+    color: theme.text,
     textAlign: 'center',
     marginBottom: 20,
   },
   confirmationText: {
     fontSize: 16,
-    color: '#666',
+    color: theme.textSecondary,
     textAlign: 'center',
     marginBottom: 20,
   },
   warningText: {
     fontSize: 14,
-    color: '#FF9500',
+    color: BaseColors.warning,
     textAlign: 'center',
     marginBottom: 30,
     fontWeight: '500',
@@ -612,21 +650,41 @@ const createStyles = (theme: any) => StyleSheet.create({
   confirmButton: {
     flex: 1,
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: 'center',
+    shadowColor: BaseColors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   cancelButton: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: BaseColors.gray[200],
+    borderWidth: 1,
+    borderColor: BaseColors.gray[300],
   },
   cancelButtonText: {
-    color: '#333',
+    color: BaseColors.gray[700],
     fontSize: 16,
     fontWeight: '600',
   },
   finishConfirmButton: {
     backgroundColor: theme.primary,
+    borderWidth: 2,
+    borderColor: theme.primary,
   },
   finishConfirmButtonText: {
+    color: BaseColors.white,
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  // Estilo para loading no botão de finalizar
+  buttonLoadingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  buttonLoadingText: {
     color: BaseColors.white,
     fontSize: 16,
     fontWeight: '600',
