@@ -69,9 +69,8 @@ export default function HomeScreen() {
 
       <View style={styles.content}>
         <View style={styles.welcomeSection}>
-          <Text style={styles.welcomeEmoji}>🚀</Text>
           <Text style={styles.question}>O que vamos estudar hoje?</Text>
-          <Text style={styles.subtitle}>Escolha sua aventura de aprendizado!</Text>
+          <Text style={styles.subtitle}>🚀 Escolha sua aventura de aprendizado!</Text>
         </View>
 
         <View style={styles.disciplinesContainer}>
@@ -180,10 +179,6 @@ const styles = StyleSheet.create({
   welcomeSection: {
     alignItems: "center",
     marginBottom: 40,
-  },
-  welcomeEmoji: {
-    fontSize: 48,
-    marginBottom: 16,
   },
   question: {
     fontSize: 26,
