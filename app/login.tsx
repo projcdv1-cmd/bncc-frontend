@@ -31,7 +31,7 @@ export default function LoginScreen() {
 
       if (!response.success) {
         Alert.alert("Erro", response.message || "Acesso inválido");
-        return
+        return;
       }
       await login({ email, ...response.user });
     } catch {
@@ -81,7 +81,7 @@ export default function LoginScreen() {
           disabled={isLoading}
         >
           {isLoading ? (
-            <ActivityIndicator size="small" color="#white" />
+            <ActivityIndicator size="small" color="white" />
           ) : (
             <Text style={styles.loginButtonText}>Entrar</Text>
           )}
