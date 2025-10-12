@@ -2,6 +2,21 @@
 
 > **Aplicativo móvel gamificado para questionários educacionais baseados na Base Nacional Comum Curricular (BNCC)**
 
+
+
+
+## 📱 Screenshots
+
+
+### 🏠 Tela Inicial
+
+
+### 📝 Questionários
+
+
+### 📊 Resultados
+
+
 [![Made with Expo](https://img.shields.io/badge/Made%20with-Expo-1C1E24?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/)
 [![React Native](https://img.shields.io/badge/React_Native-0.81.4-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -370,11 +385,7 @@ Ao reportar bugs, inclua:
 
 ---
 
-## 📄 Licença
 
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
 
 ## 👨‍💻 Autor
 
@@ -382,17 +393,8 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 - 📧 Email: [augusto.t.seabra79@gmail.com](mailto:augusto.t.seabra79@gmail.com)
 - 💼 LinkedIn: [/in/augusto-seabra-desenvolvedor](https://linkedin.com/in/augusto-seabra-desenvolvedor)
-- 🐙 GitHub: [@skti-dev](https://github.com/skti-dev)
-
----
-
-## 📱 Screenshots
-
-### 🏠 Tela Inicial
-
-### 📝 Questionários
-
-### 📊 Resultados
+- 🐙 GitHub: [@skti-dev
+  ](https://github.com/skti-dev)
 
 ---
 
