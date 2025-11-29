@@ -1,5 +1,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { authApi } from "@/services/authApi";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
@@ -18,6 +19,7 @@ export default function LoginScreen() {
   const [senha, setSenha] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
+  const router = useRouter();
 
   const handleLogin = async () => {
     if (!email || !senha) {
@@ -34,6 +36,7 @@ export default function LoginScreen() {
         return;
       }
       await login({ email, ...response.user });
+      router.replace("/");
     } catch {
       Alert.alert("Erro", "Erro de conexão com o servidor");
     } finally {
@@ -69,6 +72,11 @@ export default function LoginScreen() {
             placeholder="Digite sua senha"
             value={senha}
             onChangeText={setSenha}
+            onKeyPress={(e) => {
+              if(e.nativeEvent.key === 'Enter') {
+                handleLogin();
+              }
+            }}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}

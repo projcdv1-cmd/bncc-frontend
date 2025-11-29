@@ -44,6 +44,11 @@ export default function QuestoesScreen() {
     if (showSummary || canNavigateBack) {
       return false;
     }
+
+    if(!canNavigateBack) {
+      router.back();
+      return true;
+    }
     
     Alert.alert(
       'Sair do Questionário',

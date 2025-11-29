@@ -184,6 +184,9 @@ export default function MeusResultadosScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Text style={styles.backButtonText}>← Voltar</Text>
+        </TouchableOpacity>
         <Text style={styles.title}>📊 Meus Resultados</Text>
         <Text style={styles.subtitle}>
           {resultados.length > 0 
@@ -238,6 +241,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 4,
+  },
+  backButton: {
+    alignSelf: 'flex-start',
+    marginBottom: 15,
+  },
+  backButtonText: {
+    color: BaseColors.white,
+    fontSize: 16,
+    fontWeight: '500',
   },
   title: {
     fontSize: 28,
