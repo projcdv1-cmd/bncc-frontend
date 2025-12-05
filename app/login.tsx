@@ -1,7 +1,7 @@
+import React, { useState } from "react";
+import { useRouter } from "expo-router";
 import { useAuth } from "@/contexts/AuthContext";
 import { authApi } from "@/services/authApi";
-import { useRouter } from "expo-router";
-import React, { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -35,7 +35,13 @@ export default function LoginScreen() {
         Alert.alert("Erro", response.message || "Acesso inválido");
         return;
       }
-      await login({ email, ...response.user });
+
+      if (!response.access_token) {
+        Alert.alert("Erro", "Token de acesso não recebido");
+        return;
+      }
+
+      await login({ email, ...response.user }, response.access_token);
       router.replace("/");
     } catch {
       Alert.alert("Erro", "Erro de conexão com o servidor");

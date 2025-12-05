@@ -11,6 +11,7 @@ export interface LoginResponse {
     email?: string;
     metadata?: any;
   };
+  access_token?: string;
   message?: string;
 }
 
@@ -24,11 +25,12 @@ export const authApi = {
     try {
       const response = await api.post('/auth/login', credentials);
 
-      const { user, message } = response.data;
+      const { user, message, access_token } = response.data;
       
       return {
         success: true,
         user,
+        access_token,
         message,
       };
     } catch (error: any) {
